@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@theme {
+  /* Barlow for body, Barlow Condensed for editorial display */
+  --font-sans: 'Barlow', system-ui, -apple-system, sans-serif;
+  --font-display: 'Barlow Condensed', 'Barlow', sans-serif;
+  --font-grotesk: 'Barlow', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Light, warm antux palette */
+  --color-bg: #FDFCF9;          /* soft warm page background */
+  --color-surface: #F4F0E7;     /* warm light panels / alt sections */
+  --color-primary: #FFAE00;     /* amber */
+  --color-secondary: #F54200;   /* orange-red */
+  --color-accent1: #F54200;     /* remap → orange-red */
+  --color-accent2: #FF7A1A;     /* remap → warm orange */
+  --color-text: #0A0705;        /* near-black */
+  --color-ink: #1C1712;         /* slightly softer ink for body */
+  --color-muted: #6B6560;       /* warm gray paragraph */
+  --color-border: rgba(10, 7, 5, 0.09);
+  --color-success: #159A52;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    /* Lenis drives scrolling — keep native smooth off to avoid conflicts */
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-grotesk);
+    color: var(--color-text);
+    @apply tracking-tight;
+  }
+
+  ::selection {
+    background: var(--color-text);
+    color: #fff;
+  }
+
+  /* Lenis */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: hidden; }
+  .lenis.lenis-smooth iframe { pointer-events: none; }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-[1360px] mx-auto px-6 md:px-10 lg:px-16;
+  }
+
+  .font-display { font-family: var(--font-display); }
+
+  /* Editorial eyebrow label */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.22em] text-secondary;
+  }
+
+  /* Amber → orange gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, var(--color-primary), var(--color-accent2) 52%, var(--color-secondary));
+  }
+
+  /* ── Premium frosted glass ─────────────────────────────
+     Real backdrop blur + saturation over the page's ambient
+     colour field, a bright translucent fill, a hairline light
+     border and an inner top highlight for that thick-glass edge. */
+  .glass-card,
+  .industrial-box {
+    @apply relative rounded-[22px] overflow-hidden transition-all duration-500;
+    /* High-opacity base so the card still reads as a clean solid surface
+       even when backdrop-filter is dropped (screen share / recording,
+       older or in-app browsers). The blur just adds depth on top. */
+    background:
+      linear-gradient(150deg, rgba(255,255,255,0.96), rgba(255,255,255,0.9));
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(10,7,5,0.06);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.9),
+      0 2px 6px rgba(10,7,5,0.05),
+      0 26px 60px -28px rgba(10,7,5,0.42);
+  }
+  /* Lighter glass for chips / small surfaces */
+  .glass-soft {
+    background: rgba(255,255,255,0.9);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(10,7,5,0.07);
+  }
+
+  /* Frosted panel used for full-width bands (marquee/footer) */
+  .glass-panel {
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(246,240,231,0.86));
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    backdrop-filter: blur(16px) saturate(140%);
+  }
+
+  /* Fallback: if backdrop-filter is unsupported or stripped, go fully solid
+     so cards never look see-through or broken. */
+  @supports not ((-webkit-backdrop-filter: blur(2px)) or (backdrop-filter: blur(2px))) {
+    .glass-card, .industrial-box, .glass-soft { background: #ffffff; }
+    .glass-panel { background: var(--color-surface); }
+  }
+
+  .glow-primary {
+    box-shadow: 0 16px 34px -12px rgba(255, 174, 0, 0.55);
+  }
+  .glow-indigo {
+    box-shadow: 0 14px 30px -12px rgba(255, 174, 0, 0.4);
+  }
+
+  .input-field {
+    @apply w-full px-5 py-4 rounded-xl text-text placeholder:text-muted/60 focus:outline-none transition-all duration-300;
+    background: rgba(255,255,255,0.92);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    backdrop-filter: blur(10px) saturate(140%);
+    border: 1px solid rgba(10,7,5,0.08);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+  }
+  .input-field:focus {
+    border-color: rgba(245, 66, 0, 0.55);
+    box-shadow: 0 0 0 4px rgba(245, 66, 0, 0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.72);
+  }
+
+  /* Paper grain */
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: multiply;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar { width: 8px; height: 8px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(10,7,5,0.18); border-radius: 999px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(10,7,5,0.3); }
+
+  /* Infinite marquee */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--marquee-duration, 32s) linear infinite;
+  }
+  .marquee-paused:hover .marquee-track { animation-play-state: paused; }
+
+  /* Animated underline link */
+  .link-underline {
+    background-image: linear-gradient(var(--color-secondary), var(--color-secondary));
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .link-underline:hover { background-size: 100% 2px; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+.bounce-slow { animation: bounce-slow 3s infinite ease-in-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* Custom cursor is desktop-only; never show it on touch/no-hover devices */
+@media (hover: none), (pointer: coarse) {
+  .cursor-visual { display: none !important; }
+}
