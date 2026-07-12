@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Zap, BarChart3, Layers, CheckCircle2, ZoomIn, ZoomOut, ShieldCheck, Cog } from 'lucide-react';
 
 import type { Project } from '@/types';
+import { asset } from '@/lib/asset';
 import { MagneticBtn } from './MagneticBtn';
 import { GoogleSheetUI } from './GoogleSheetUI';
 
@@ -186,7 +187,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   <div className="flex flex-col gap-4">
                     <h4 className="text-[10px] font-mono uppercase tracking-widest text-secondary font-bold">Workflow Logic Screenshots</h4>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
-                      {project.images.map((src, i) => (
+                      {project.images.map((rawSrc, i) => {
+                        const src = asset(rawSrc);
+                        return (
                         <div
                           key={i}
                           onClick={() => setActiveImage(src)}
@@ -201,7 +204,8 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                             <span className="text-[8px] font-mono uppercase tracking-widest text-white font-bold bg-black/60 px-2 py-1 rounded">View Full</span>
                           </div>
                         </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 )}

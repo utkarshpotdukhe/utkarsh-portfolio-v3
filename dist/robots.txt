@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# Block nothing — this is a public portfolio.
-Sitemap: https://utkarsh-potdukhe.netlify.app/sitemap.xml

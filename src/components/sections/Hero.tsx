@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MagneticBtn } from '@/components/ui/MagneticBtn';
 import { STATS, ROLES, CONTACT } from '@/lib/constants';
+import { asset } from '@/lib/asset';
 import { ChevronDown } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -184,7 +185,7 @@ export function Hero() {
           <MagneticBtn href="#projects" variant="primary">
             View my work
           </MagneticBtn>
-          <MagneticBtn href={CONTACT.resume} variant="outline" download="Utkarsh-Potdukhe-Resume.pdf">
+          <MagneticBtn href={asset(CONTACT.resume)} variant="outline" download="Utkarsh-Potdukhe-Resume.pdf">
             Download resume
           </MagneticBtn>
         </motion.div>
