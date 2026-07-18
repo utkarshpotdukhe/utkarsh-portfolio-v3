@@ -136,7 +136,6 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="eyebrow text-muted"
         >
-          <span className="h-px w-8 bg-secondary" />
           Hey, I&apos;m Utkarsh
         </motion.p>
 
