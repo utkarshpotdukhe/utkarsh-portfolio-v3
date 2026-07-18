@@ -637,5 +637,5 @@ export const CONTACT = {
   portfolio: 'utkarsh-potdukhe.netlify.app',
   linkedin: 'https://linkedin.com/in/utkarsh-potdukhe',
   github: 'https://github.com/utkarsh-potdukhe',
-  resume: '/Utkarsh_Potdukhe_AI_Engineer.pdf',
+  resume: '/Utkarsh_Potdukhe_Resume_AI_Automation.pdf',
 };
