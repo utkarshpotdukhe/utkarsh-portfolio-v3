@@ -63,30 +63,50 @@ export function Contact() {
         <div className="w-full max-w-4xl grid md:grid-cols-2 gap-12 lg:gap-20 items-stretch mt-8">
           {/* Left Side: Centered Contact Cards */}
           <div className="flex flex-col gap-6">
-            <div className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-secondary/50 hover:shadow-[0_24px_60px_-30px_rgba(4,0,11,0.30)] transition-all">
+            <motion.div
+              initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+              className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-secondary/50 hover:shadow-[0_24px_60px_-30px_rgba(4,0,11,0.30)] transition-all">
               <span className="font-mono text-[10px] uppercase tracking-widest text-secondary font-bold">Email</span>
               <a href={`mailto:${CONTACT.email}`} className="font-grotesk text-xl md:text-2xl font-bold text-text hover:text-secondary transition-colors">
                 {CONTACT.email}
               </a>
-            </div>
+            </motion.div>
 
-            <div className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-secondary/50 hover:shadow-[0_24px_60px_-30px_rgba(4,0,11,0.30)] transition-all">
+            <motion.div
+              initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+              className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-secondary/50 hover:shadow-[0_24px_60px_-30px_rgba(4,0,11,0.30)] transition-all">
               <span className="font-mono text-[10px] uppercase tracking-widest text-secondary font-bold">Phone</span>
               <a href={`tel:${CONTACT.phone.replace(/\s+/g, '')}`} className="font-grotesk text-xl md:text-2xl font-bold text-text hover:text-secondary transition-colors">
                 {CONTACT.phone}
               </a>
-            </div>
+            </motion.div>
 
-            <div className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-secondary/50 hover:shadow-[0_24px_60px_-30px_rgba(4,0,11,0.30)] transition-all">
+            <motion.div
+              initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.75, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
+              className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-secondary/50 hover:shadow-[0_24px_60px_-30px_rgba(4,0,11,0.30)] transition-all">
               <span className="font-mono text-[10px] uppercase tracking-widest text-secondary font-bold">Network</span>
               <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" className="font-grotesk text-xl font-bold text-secondary hover:underline hover:underline-offset-8 transition-all">
                 LinkedIn Profile →
               </a>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Side: Form */}
-          <div className="industrial-box p-6 md:p-10 hover:border-primary/40 transition-colors">
+          <motion.div
+            initial={{ opacity: 0, y: 36, scale: 0.97, filter: 'blur(8px)' }}
+            whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="industrial-box p-6 md:p-10 hover:border-primary/40 transition-colors">
             <form onSubmit={handleSubmit} className="flex flex-col gap-8">
               <div className="flex flex-col gap-3">
                 <label htmlFor="name" className="text-xs font-mono tracking-widest text-muted/70 uppercase font-bold">
@@ -171,7 +191,7 @@ export function Contact() {
                 </AnimatePresence>
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

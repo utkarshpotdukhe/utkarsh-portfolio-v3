@@ -97,10 +97,10 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
         onMouseMove={handleMove}
         onMouseLeave={reset}
         style={{ rotateX: rx, rotateY: ry, transformStyle: 'preserve-3d' }}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 36, scale: 0.96, filter: 'blur(10px)' }}
+        whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
         viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.6, delay: (index % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.85, delay: (index % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
         className="group glass-card relative h-full w-full flex flex-col text-left p-6 md:p-7 cursor-pointer
                    hover:border-secondary/40 transition-colors duration-300 overflow-hidden"
       >

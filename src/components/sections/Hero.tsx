@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { MagneticBtn } from '@/components/ui/MagneticBtn';
 import { STATS, ROLES, CONTACT } from '@/lib/constants';
 import { asset } from '@/lib/asset';
@@ -17,6 +17,18 @@ export function Hero() {
   const nameRef = useRef<HTMLHeadingElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const [roleIndex, setRoleIndex] = useState(0);
+  const reducedMotion = useReducedMotion();
+
+  // Scroll-driven parallax exit — content drifts up and softly fades as you
+  // scroll past the hero, while the ambient blobs lag behind for depth.
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start'],
+  });
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, reducedMotion ? 0 : -140]);
+  const contentScale = useTransform(scrollYProgress, [0, 1], [1, reducedMotion ? 1 : 0.965]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, reducedMotion ? 1 : 0]);
+  const blobsY = useTransform(scrollYProgress, [0, 1], [0, reducedMotion ? 0 : 110]);
 
   // Role switcher
   useEffect(() => {
@@ -122,13 +134,16 @@ export function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
       {/* Warm gradient mesh background */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+      <motion.div style={{ y: blobsY }} className="absolute inset-0 pointer-events-none" aria-hidden>
         <div className="mesh-blob-1 absolute top-[-12%] left-[-10%] w-[620px] h-[620px] rounded-full bg-primary opacity-[0.20] blur-[130px]" />
         <div className="mesh-blob-2 absolute bottom-[-12%] right-[-6%] w-[520px] h-[520px] rounded-full bg-accent2 opacity-[0.16] blur-[120px]" />
         <div className="mesh-blob-3 absolute top-[38%] left-[46%] w-[420px] h-[420px] rounded-full bg-secondary opacity-[0.10] blur-[120px]" />
-      </div>
+      </motion.div>
 
-      <div className="section-container relative z-10 flex flex-col items-center text-center gap-5 pt-24">
+      <motion.div
+        style={{ y: contentY, scale: contentScale, opacity: contentOpacity }}
+        className="section-container relative z-10 flex flex-col items-center text-center gap-5 pt-24"
+      >
         {/* Greeting */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -210,7 +225,7 @@ export function Hero() {
             </div>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Scroll cue */}
       <motion.a

@@ -80,10 +80,10 @@ export function Experience() {
 
                   {/* Card */}
                   <motion.div
-                    initial={{ opacity: 0, x: right ? 44 : -44 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 34, x: right ? 16 : -16, filter: 'blur(8px)' }}
+                    whileInView={{ opacity: 1, y: 0, x: 0, filter: 'blur(0px)' }}
                     viewport={{ once: true, margin: '-70px' }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     className={`w-full md:w-1/2 pl-12 md:pl-0 ${right ? 'md:pl-12' : 'md:pr-12'}`}
                   >
                     <div className="industrial-box p-5 md:p-7 hover:border-primary/50 hover:shadow-[0_24px_60px_-30px_rgba(10,7,5,0.30)] transition-all duration-500">
@@ -131,10 +131,10 @@ export function Experience() {
 
         {/* Education — deliberately set apart and highlighted, not part of the job timeline */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 34, scale: 0.97, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl mx-auto mt-20"
         >
           <div className="relative rounded-[26px] overflow-hidden border border-secondary/30 p-8 md:p-11 text-center
