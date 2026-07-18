@@ -57,7 +57,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           data-lenis-prevent
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/40 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/50 backdrop-blur-md"
           onClick={onClose}
         >
           <motion.div
@@ -65,13 +65,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl max-h-[85vh] overflow-hidden industrial-box shadow-2xl flex flex-col md:flex-row"
+            className="relative w-full max-w-4xl max-h-[85vh] overflow-hidden rounded-[24px] bg-[#FDFCFA] border border-black/[0.06] shadow-2xl flex flex-col md:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-surface border border-border text-muted hover:text-text hover:bg-black/[0.05] transition-all"
+              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-[#F5F2EB] border border-border text-muted hover:text-text hover:bg-black/[0.05] transition-all"
             >
               <X size={18} />
             </button>
@@ -128,7 +128,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     {project.modules.map((module, i) => {
                       const Icon = [BarChart3, Layers, Zap, CheckCircle2, ShieldCheck, Cog][i % 6];
                       return (
-                        <div key={i} className="p-5 rounded-xl border border-border bg-surface flex flex-col gap-2.5 transition-all hover:bg-white hover:border-primary/40 hover:shadow-[0_16px_40px_-24px_rgba(4,0,11,0.30)]">
+                        <div key={i} className="p-5 rounded-xl border border-border bg-[#F5F2EB] flex flex-col gap-2.5 transition-all hover:bg-white hover:border-primary/40 hover:shadow-[0_16px_40px_-24px_rgba(4,0,11,0.30)]">
                           <Icon size={18} className={[
                             "text-secondary",
                             "text-accent2",
@@ -148,14 +148,14 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="p-4 rounded-xl border border-border bg-surface flex flex-col gap-2">
+                    <div className="p-4 rounded-xl border border-border bg-[#F5F2EB] flex flex-col gap-2">
                       <BarChart3 size={18} className="text-secondary" />
                       <h4 className="font-grotesk font-bold text-text text-[13px]">Automated Logic</h4>
                       <p className="text-[11px] text-muted leading-relaxed">
                         Custom-built workflow triggers and complex conditional branching for zero manual intervention.
                       </p>
                     </div>
-                    <div className="p-4 rounded-xl border border-border bg-surface flex flex-col gap-2">
+                    <div className="p-4 rounded-xl border border-border bg-[#F5F2EB] flex flex-col gap-2">
                       <Layers size={18} className="text-accent2" />
                       <h4 className="font-grotesk font-bold text-text text-[13px]">Data Integrity</h4>
                       <p className="text-[11px] text-muted leading-relaxed">
@@ -275,7 +275,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                       </MagneticBtn>
                       <button
                         disabled
-                        className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-surface border border-border text-muted/50 text-[9px] tracking-widest uppercase font-bold cursor-not-allowed opacity-70"
+                        className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F5F2EB] border border-border text-muted/50 text-[9px] tracking-widest uppercase font-bold cursor-not-allowed opacity-70"
                       >
                         Live Demo <ExternalLink size={12} />
                       </button>

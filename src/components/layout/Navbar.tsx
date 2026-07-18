@@ -49,7 +49,7 @@ export function Navbar() {
         animate={{ y: hidden ? '-100%' : 0 }}
         transition={{ duration: 0.35, ease: 'easeInOut' }}
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled
-            ? 'bg-white/90 backdrop-blur-xl backdrop-saturate-150 border-b border-black/[0.06] shadow-[0_10px_30px_-20px_rgba(10,7,5,0.35)]'
+            ? 'bg-white/55 backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/60 shadow-[0_10px_30px_-20px_rgba(30,34,50,0.35)]'
             : 'bg-transparent'
           }`}
       >

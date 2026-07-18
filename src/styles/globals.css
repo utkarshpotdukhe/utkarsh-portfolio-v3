@@ -9,7 +9,7 @@
 
   /* Light, warm antux palette */
   --color-bg: #FDFCF9;          /* soft warm page background */
-  --color-surface: #F4F0E7;     /* warm light panels / alt sections */
+  --color-surface: rgba(255,255,255,0.6); /* translucent glass panels / chips */
   --color-primary: #FFAE00;     /* amber */
   --color-secondary: #F54200;   /* orange-red */
   --color-accent1: #F54200;     /* remap → orange-red */
@@ -92,38 +92,49 @@
   }
 
   /* ── Premium frosted glass ─────────────────────────────
-     Real backdrop blur + saturation over the page's ambient
-     colour field, a bright translucent fill, a hairline light
-     border and an inner top highlight for that thick-glass edge. */
+     Translucent fill + heavy backdrop blur so the pastel field
+     glows through each card, a bright hairline light border,
+     an inner top highlight for the thick-glass edge, and a
+     soft layered shadow for float. */
   .glass-card,
   .industrial-box {
-    @apply relative rounded-[22px] overflow-hidden transition-all duration-500;
-    /* High-opacity base so the card still reads as a clean solid surface
-       even when backdrop-filter is dropped (screen share / recording,
-       older or in-app browsers). The blur just adds depth on top. */
+    @apply relative rounded-[24px] overflow-hidden transition-all duration-500;
     background:
-      linear-gradient(150deg, rgba(255,255,255,0.96), rgba(255,255,255,0.9));
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(10,7,5,0.06);
+      linear-gradient(150deg, rgba(255,255,255,0.78), rgba(255,255,255,0.52) 55%, rgba(255,255,255,0.66));
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255,255,255,0.75);
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.9),
-      0 2px 6px rgba(10,7,5,0.05),
-      0 26px 60px -28px rgba(10,7,5,0.42);
+      inset 0 1px 0 rgba(255,255,255,0.95),
+      inset 0 -1px 0 rgba(255,255,255,0.35),
+      0 4px 14px rgba(30,34,50,0.06),
+      0 32px 72px -32px rgba(30,34,50,0.38);
+  }
+  .glass-card:hover,
+  .industrial-box:hover {
+    border-color: rgba(255,255,255,0.95);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 0 -1px 0 rgba(255,255,255,0.4),
+      0 6px 18px rgba(30,34,50,0.08),
+      0 44px 90px -36px rgba(30,34,50,0.45);
   }
   /* Lighter glass for chips / small surfaces */
   .glass-soft {
-    background: rgba(255,255,255,0.9);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
-    backdrop-filter: blur(12px) saturate(150%);
-    border: 1px solid rgba(10,7,5,0.07);
+    background: rgba(255,255,255,0.55);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    backdrop-filter: blur(18px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.65);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
   }
 
   /* Frosted panel used for full-width bands (marquee/footer) */
   .glass-panel {
-    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(246,240,231,0.86));
-    -webkit-backdrop-filter: blur(16px) saturate(140%);
-    backdrop-filter: blur(16px) saturate(140%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.5));
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+    border-top: 1px solid rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.7);
   }
 
   /* Fallback: if backdrop-filter is unsupported or stripped, go fully solid
@@ -142,16 +153,16 @@
 
   .input-field {
     @apply w-full px-5 py-4 rounded-xl text-text placeholder:text-muted/60 focus:outline-none transition-all duration-300;
-    background: rgba(255,255,255,0.92);
-    -webkit-backdrop-filter: blur(10px) saturate(140%);
-    backdrop-filter: blur(10px) saturate(140%);
-    border: 1px solid rgba(10,7,5,0.08);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.55);
+    -webkit-backdrop-filter: blur(16px) saturate(170%);
+    backdrop-filter: blur(16px) saturate(170%);
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
   }
   .input-field:focus {
     border-color: rgba(245, 66, 0, 0.55);
-    box-shadow: 0 0 0 4px rgba(245, 66, 0, 0.12), inset 0 1px 0 rgba(255,255,255,0.8);
-    background: rgba(255,255,255,0.72);
+    box-shadow: 0 0 0 4px rgba(245, 66, 0, 0.12), inset 0 1px 0 rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.75);
   }
 
   /* Paper grain */
