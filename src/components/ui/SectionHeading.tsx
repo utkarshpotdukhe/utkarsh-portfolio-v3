@@ -49,7 +49,7 @@ export function SectionHeading({ label, title, subtitle, index, className = '' }
         {index && (
           <span className="font-mono text-xs text-muted/70 tabular-nums">{index}</span>
         )}
-        <span className="h-px w-8 bg-secondary" />
+        <span className="h-px w-8 bg-accent" />
         <span className="eyebrow !gap-0">{label}</span>
       </div>
 

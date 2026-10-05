@@ -49,7 +49,7 @@ export function Navbar() {
         animate={{ y: hidden ? '-100%' : 0 }}
         transition={{ duration: 0.35, ease: 'easeInOut' }}
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled
-            ? 'bg-white/55 backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/60 shadow-[0_10px_30px_-20px_rgba(30,34,50,0.35)]'
+            ? 'bg-white/70 backdrop-blur-2xl border-b border-border shadow-[0_10px_30px_-24px_rgba(15,17,21,0.30)]'
             : 'bg-transparent'
           }`}
       >
@@ -57,7 +57,7 @@ export function Navbar() {
           {/* Logo */}
           <a href="#" className="font-grotesk font-black text-3xl text-text relative group tracking-tighter">
             <span className="gradient-text">UP</span>
-            <span className="absolute -inset-2 rounded-xl opacity-0 group-hover:opacity-100 bg-primary/5 transition-opacity" />
+            <span className="absolute -inset-2 rounded-xl opacity-0 group-hover:opacity-100 bg-text/5 transition-opacity" />
           </a>
 
           {/* Desktop links */}
@@ -73,7 +73,7 @@ export function Navbar() {
                   {activeLink === link.href && (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-secondary rounded-full"
+                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-accent rounded-full"
                     />
                   )}
                 </a>
@@ -84,9 +84,9 @@ export function Navbar() {
           {/* CTA */}
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center px-8 py-3 rounded-full bg-primary text-[#04000b] text-base font-bold hover:bg-secondary hover:text-white transition-all duration-300 glow-primary hover:scale-105"
+            className="hidden md:inline-flex items-center px-7 py-2.5 rounded-full bg-primary text-white text-[15px] font-semibold hover:bg-accent transition-all duration-300 glow-primary"
           >
-            Hire Me Now
+            Get in touch
           </a>
 
           {/* Hamburger */}
@@ -127,7 +127,7 @@ export function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="font-grotesk text-3xl font-bold text-text hover:text-secondary transition-colors"
+                    className="font-grotesk text-3xl font-bold text-text hover:text-accent transition-colors"
                   >
                     {link.label}
                   </a>

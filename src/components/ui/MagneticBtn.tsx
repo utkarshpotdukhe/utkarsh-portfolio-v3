@@ -44,9 +44,9 @@ export function MagneticBtn({
     'relative inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm',
     'transition-colors duration-200 select-none will-change-transform',
     variant === 'primary' &&
-    'bg-primary text-[#04000b] hover:bg-secondary hover:text-white glow-primary',
+    'bg-primary text-white hover:bg-accent glow-primary',
     variant === 'outline' &&
-    'border border-text/20 text-text hover:border-secondary hover:text-secondary',
+    'border border-text/20 bg-white/40 text-text hover:border-accent hover:text-accent',
     className
   );
 

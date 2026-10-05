@@ -2,8 +2,8 @@
 
 import { motion, useScroll, useVelocity, useSpring, useTransform } from 'framer-motion';
 
-const ROW_A = ['n8n', 'OpenAI', 'AI Agents', 'Next.js', 'React', 'Automation', 'Webhooks', 'REST APIs', 'Zapier', 'TypeScript'];
-const ROW_B = ['Supabase', 'Google Sheets', 'Vapi', 'ElevenLabs', 'LangChain', 'Shopify', 'Gemini', 'Node.js', 'Workflows', 'Amazon SP-API'];
+const ROW_A = ['LangChain', 'LangGraph', 'RAG', 'AI Agents', 'OpenAI API', 'FastAPI', 'Python', 'n8n', 'Next.js', 'React'];
+const ROW_B = ['Vector Databases', 'BM25', 'Redis', 'PostgreSQL', 'Docker', 'Langfuse', 'OpenTelemetry', 'RAGAS', 'ElevenLabs', 'Node.js'];
 
 function Row({ items, duration, reverse }: { items: string[]; duration: number; reverse?: boolean }) {
   const doubled = [...items, ...items];
@@ -18,7 +18,7 @@ function Row({ items, duration, reverse }: { items: string[]; duration: number; 
             <span className="font-display font-semibold uppercase tracking-tight text-4xl md:text-6xl text-text/85 whitespace-nowrap">
               {item}
             </span>
-            <span className="text-secondary text-2xl md:text-3xl leading-none select-none">✳</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-accent/70 select-none" />
           </div>
         ))}
       </div>
@@ -33,14 +33,14 @@ export function TechMarquee() {
   const skewX = useTransform(smoothVel, [-2500, 0, 2500], [-7, 0, 7], { clamp: true });
 
   return (
-    <section aria-label="Tools and technologies" className="relative py-10 md:py-14 border-y border-white/50 glass-panel overflow-hidden">
+    <section aria-label="Tools and technologies" className="relative py-10 md:py-14 glass-panel overflow-hidden">
       <motion.div style={{ skewX }} className="flex flex-col gap-3 md:gap-5 will-change-transform">
         <Row items={ROW_A} duration={34} />
         <Row items={ROW_B} duration={40} reverse />
       </motion.div>
       {/* Edge fades */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-surface to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-surface to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-bg to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-bg to-transparent" />
     </section>
   );
 }

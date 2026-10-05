@@ -1,3 +1,17 @@
+export type ProjectIcon =
+  | 'rag'
+  | 'agent'
+  | 'gateway'
+  | 'research'
+  | 'ecom'
+  | 'appointment'
+  | 'linkedin'
+  | 'whatsapp'
+  | 'backend'
+  | 'voice'
+  | 'restaurant'
+  | 'copywriting';
+
 export interface Project {
   id: string;
   title: string;
@@ -5,7 +19,7 @@ export interface Project {
   impact: string;
   impactLabel: string;
   description: string;
-  iconType: 'ecom' | 'appointment' | 'linkedin' | 'whatsapp' | 'backend' | 'voice' | 'restaurant' | 'copywriting';
+  iconType: ProjectIcon;
   images?: string[];
   // Extended fields for detailed case studies
   problemSolution?: string;
@@ -16,7 +30,6 @@ export interface Project {
   liveUrl?: string;
   showSheetUI?: boolean;
 }
-
 
 export interface Job {
   id: string;
@@ -37,9 +50,9 @@ export interface Education {
   cgpa: string;
 }
 
-export interface Skill {
-  label: string;
-  category: 'automation' | 'frontend' | 'backend' | 'professional';
+export interface SkillGroup {
+  title: string;
+  items: string[];
 }
 
 export interface Stat {

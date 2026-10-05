@@ -20,7 +20,7 @@ export function GoogleSheetUI({ sheetUrl }: SheetUIProps) {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'Published': return <CheckCircle2 size={13} className="text-success" />;
-      case 'Completed': return <Clock size={13} className="text-secondary" />;
+      case 'Completed': return <Clock size={13} className="text-accent" />;
       case 'Draft': return <FileEdit size={13} className="text-muted" />;
       default: return null;
     }
@@ -29,7 +29,7 @@ export function GoogleSheetUI({ sheetUrl }: SheetUIProps) {
   const getStatusStyle = (status: string) => {
     switch (status) {
       case 'Published': return 'bg-success/10 text-success';
-      case 'Completed': return 'bg-secondary/10 text-secondary';
+      case 'Completed': return 'bg-accent-soft text-accent';
       case 'Draft': return 'bg-surface text-muted';
       default: return 'bg-surface text-muted';
     }
@@ -55,7 +55,7 @@ export function GoogleSheetUI({ sheetUrl }: SheetUIProps) {
                 <input
                     type="text"
                     placeholder="Search posts..."
-                    className="pl-7 pr-3 py-1.5 bg-white border border-border rounded-md text-[10px] text-text focus:outline-none focus:border-primary/60 w-32 md:w-48 transition-all"
+                    className="pl-7 pr-3 py-1.5 bg-white border border-border rounded-md text-[10px] text-text focus:outline-none focus:border-accent/60 w-32 md:w-48 transition-all"
                 />
             </div>
             <button className="p-1.5 text-muted hover:text-text hover:bg-black/[0.04] rounded-md transition-all">
@@ -89,7 +89,7 @@ export function GoogleSheetUI({ sheetUrl }: SheetUIProps) {
                 className="group border-b border-border hover:bg-surface transition-colors"
               >
                 <td className="px-5 py-3 text-[10px] font-mono text-muted/60 text-center border-r border-border">{i + 1}</td>
-                <td className="px-5 py-3 text-[11px] font-bold text-text border-r border-border truncate max-w-[200px] group-hover:text-secondary transition-colors">
+                <td className="px-5 py-3 text-[11px] font-bold text-text border-r border-border truncate max-w-[200px] group-hover:text-accent transition-colors">
                   {row.title}
                 </td>
                 <td className="px-5 py-3 text-[10px] text-muted border-r border-border truncate max-w-[250px]">
@@ -127,7 +127,7 @@ export function GoogleSheetUI({ sheetUrl }: SheetUIProps) {
       <div className="px-5 py-2 border-t border-border bg-surface flex items-center justify-between">
          <div className="flex items-center gap-4 text-[9px] font-mono tracking-widest text-muted">
             <span className="flex items-center gap-1.5"><div className="w-1 h-1 rounded-full bg-success"/> DB_STATUS: ONLINE</span>
-            <span className="flex items-center gap-1.5"><div className="w-1 h-1 rounded-full bg-secondary animate-pulse"/> SYNCING (n8n)...</span>
+            <span className="flex items-center gap-1.5"><div className="w-1 h-1 rounded-full bg-accent animate-pulse"/> SYNCING (n8n)...</span>
          </div>
          <div className="text-[9px] font-mono tracking-widest text-muted uppercase">
             Rows: 7 / 500

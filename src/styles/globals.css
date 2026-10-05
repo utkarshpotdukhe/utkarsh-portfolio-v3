@@ -7,18 +7,27 @@
   --font-grotesk: 'Barlow', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Light, warm antux palette */
-  --color-bg: #FDFCF9;          /* soft warm page background */
-  --color-surface: rgba(255,255,255,0.6); /* translucent glass panels / chips */
-  --color-primary: #FFAE00;     /* amber */
-  --color-secondary: #F54200;   /* orange-red */
-  --color-accent1: #F54200;     /* remap → orange-red */
-  --color-accent2: #FF7A1A;     /* remap → warm orange */
-  --color-text: #0A0705;        /* near-black */
-  --color-ink: #1C1712;         /* slightly softer ink for body */
-  --color-muted: #6B6560;       /* warm gray paragraph */
-  --color-border: rgba(10, 7, 5, 0.09);
-  --color-success: #159A52;
+  /* ── Quiet enterprise palette ─────────────────────────────
+     One neutral scale, one accent. Ink carries the hierarchy,
+     petrol teal is used sparingly for labels, lines and hovers,
+     green is reserved for "live / available" status only. */
+  --color-bg: #F3F4F2;          /* soft mist page background */
+  --color-surface: #ECEEEB;     /* chips, table headers, quiet panels */
+  --color-text: #0F1115;        /* ink */
+  --color-ink: #1B1E24;         /* slightly softer ink for body */
+  --color-muted: #676C75;       /* cool gray paragraph */
+  --color-border: rgba(15, 17, 21, 0.08);
+
+  --color-primary: #0F1115;     /* ink fills: buttons, solid chips */
+  --color-accent: #166A6B;      /* petrol teal, the single accent */
+  --color-accent-soft: #E1ECEC; /* accent tint for subtle fills */
+
+  /* Legacy aliases so older class names resolve to the accent */
+  --color-secondary: #166A6B;
+  --color-accent1: #166A6B;
+  --color-accent2: #166A6B;
+
+  --color-success: #1F7A5B;
 }
 
 @layer base {
@@ -30,22 +39,11 @@
     /* Lenis drives scrolling — keep native smooth off to avoid conflicts */
   }
 
-  /* Pastel page background — smooth diagonal bands
-     (pink → blue → green → yellow → coral) */
   body {
-    background-color: #ffffff;
-    background-image:
-      linear-gradient(225deg,
-        #fadade 0%,
-        #f7c9ce 11%,
-        #cbe1f5 24%,
-        #c3e2f6 38%,
-        #d0e9c9 52%,
-        #daefcd 63%,
-        #f8e9ba 75%,
-        #f6e2ac 86%,
-        #f1a4a4 100%);
-    background-attachment: fixed;
+    background-color: var(--color-bg);
+    /* one faint accent wash at the very top, nothing else */
+    background-image: radial-gradient(1100px 520px at 50% -12%, rgba(22, 106, 107, 0.09), transparent 62%);
+    background-repeat: no-repeat;
     color: var(--color-ink);
     font-family: var(--font-sans);
     line-height: 1.65;
@@ -82,87 +80,74 @@
 
   /* Editorial eyebrow label */
   .eyebrow {
-    @apply inline-flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.22em] text-secondary;
+    @apply inline-flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.22em] text-accent;
   }
 
-  /* Amber → orange gradient text */
+  /* Kept for the logo: a quiet ink gradient, no colour */
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(100deg, var(--color-primary), var(--color-accent2) 52%, var(--color-secondary));
+    background-image: linear-gradient(120deg, var(--color-text), #3A3F48);
   }
 
-  /* ── Premium frosted glass ─────────────────────────────
-     Translucent fill + heavy backdrop blur so the pastel field
-     glows through each card, a bright hairline light border,
-     an inner top highlight for the thick-glass edge, and a
-     soft layered shadow for float. */
+  /* ── Cards ────────────────────────────────────────────────
+     White surface, hairline border, soft layered shadow. A light
+     backdrop blur keeps the top accent wash from bleeding through
+     too hard behind the hero cards. */
   .glass-card,
   .industrial-box {
-    @apply relative rounded-[24px] overflow-hidden transition-all duration-500;
-    background:
-      linear-gradient(150deg, rgba(255,255,255,0.78), rgba(255,255,255,0.52) 55%, rgba(255,255,255,0.66));
-    -webkit-backdrop-filter: blur(28px) saturate(190%);
-    backdrop-filter: blur(28px) saturate(190%);
-    border: 1px solid rgba(255,255,255,0.75);
+    @apply relative rounded-[22px] overflow-hidden transition-all duration-500;
+    background: rgba(255, 255, 255, 0.86);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--color-border);
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.95),
-      inset 0 -1px 0 rgba(255,255,255,0.35),
-      0 4px 14px rgba(30,34,50,0.06),
-      0 32px 72px -32px rgba(30,34,50,0.38);
+      0 1px 2px rgba(15, 17, 21, 0.04),
+      0 24px 48px -32px rgba(15, 17, 21, 0.20);
   }
   .glass-card:hover,
   .industrial-box:hover {
-    border-color: rgba(255,255,255,0.95);
+    border-color: rgba(15, 17, 21, 0.16);
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,1),
-      inset 0 -1px 0 rgba(255,255,255,0.4),
-      0 6px 18px rgba(30,34,50,0.08),
-      0 44px 90px -36px rgba(30,34,50,0.45);
+      0 1px 2px rgba(15, 17, 21, 0.05),
+      0 32px 64px -32px rgba(15, 17, 21, 0.26);
   }
-  /* Lighter glass for chips / small surfaces */
+  /* Lighter surface for chips / small controls */
   .glass-soft {
-    background: rgba(255,255,255,0.55);
-    -webkit-backdrop-filter: blur(18px) saturate(180%);
-    backdrop-filter: blur(18px) saturate(180%);
-    border: 1px solid rgba(255,255,255,0.65);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+    background: rgba(255, 255, 255, 0.72);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
   }
 
-  /* Frosted panel used for full-width bands (marquee/footer) */
+  /* Full-width bands (marquee / footer) */
   .glass-panel {
-    background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.5));
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    backdrop-filter: blur(24px) saturate(180%);
-    border-top: 1px solid rgba(255,255,255,0.7);
-    border-bottom: 1px solid rgba(255,255,255,0.7);
+    background: rgba(255, 255, 255, 0.55);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
   }
 
-  /* Fallback: if backdrop-filter is unsupported or stripped, go fully solid
-     so cards never look see-through or broken. */
   @supports not ((-webkit-backdrop-filter: blur(2px)) or (backdrop-filter: blur(2px))) {
     .glass-card, .industrial-box, .glass-soft { background: #ffffff; }
-    .glass-panel { background: var(--color-surface); }
+    .glass-panel { background: #ffffff; }
   }
 
   .glow-primary {
-    box-shadow: 0 16px 34px -12px rgba(255, 174, 0, 0.55);
+    box-shadow: 0 14px 30px -14px rgba(15, 17, 21, 0.45);
   }
   .glow-indigo {
-    box-shadow: 0 14px 30px -12px rgba(255, 174, 0, 0.4);
+    box-shadow: 0 14px 30px -14px rgba(22, 106, 107, 0.35);
   }
 
   .input-field {
     @apply w-full px-5 py-4 rounded-xl text-text placeholder:text-muted/60 focus:outline-none transition-all duration-300;
-    background: rgba(255,255,255,0.55);
-    -webkit-backdrop-filter: blur(16px) saturate(170%);
-    backdrop-filter: blur(16px) saturate(170%);
-    border: 1px solid rgba(255,255,255,0.7);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
+    background: #ffffff;
+    border: 1px solid rgba(15, 17, 21, 0.12);
   }
   .input-field:focus {
-    border-color: rgba(245, 66, 0, 0.55);
-    box-shadow: 0 0 0 4px rgba(245, 66, 0, 0.12), inset 0 1px 0 rgba(255,255,255,0.9);
-    background: rgba(255,255,255,0.75);
+    border-color: rgba(22, 106, 107, 0.6);
+    box-shadow: 0 0 0 4px rgba(22, 106, 107, 0.10);
   }
 
   /* Paper grain */
@@ -170,7 +155,7 @@
     position: fixed;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.02;
+    opacity: 0.018;
     pointer-events: none;
     z-index: 9999;
     mix-blend-mode: multiply;
@@ -178,8 +163,8 @@
 
   .custom-scrollbar::-webkit-scrollbar { width: 8px; height: 8px; }
   .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(10,7,5,0.18); border-radius: 999px; }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(10,7,5,0.3); }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(15,17,21,0.18); border-radius: 999px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(15,17,21,0.3); }
 
   /* Infinite marquee */
   .marquee-track {
@@ -191,7 +176,7 @@
 
   /* Animated underline link */
   .link-underline {
-    background-image: linear-gradient(var(--color-secondary), var(--color-secondary));
+    background-image: linear-gradient(var(--color-accent), var(--color-accent));
     background-size: 0% 2px;
     background-position: 0 100%;
     background-repeat: no-repeat;

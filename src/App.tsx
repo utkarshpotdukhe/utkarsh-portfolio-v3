@@ -32,12 +32,10 @@ export default function App() {
         {!loaded && <Preloader key="preloader" onDone={finishIntro} />}
       </AnimatePresence>
 
-      {/* Full-page ambient colour field — gives the frosted glass something to refract */}
+      {/* Two very faint accent washes, nothing louder */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden>
-        <div className="absolute -top-[12%] -left-[10%] w-[55vw] h-[55vw] rounded-full bg-primary/25 blur-[170px]" />
-        <div className="absolute top-[28%] -right-[14%] w-[50vw] h-[50vw] rounded-full bg-accent2/20 blur-[170px]" />
-        <div className="absolute top-[60%] left-[18%] w-[46vw] h-[46vw] rounded-full bg-secondary/14 blur-[180px]" />
-        <div className="absolute -bottom-[12%] right-[8%] w-[42vw] h-[42vw] rounded-full bg-primary/16 blur-[170px]" />
+        <div className="absolute top-[30%] -right-[16%] w-[48vw] h-[48vw] rounded-full bg-accent/[0.07] blur-[180px]" />
+        <div className="absolute -bottom-[14%] left-[6%] w-[44vw] h-[44vw] rounded-full bg-accent/[0.05] blur-[180px]" />
       </div>
 
       {/* Paper grain for a printed, tactile feel */}

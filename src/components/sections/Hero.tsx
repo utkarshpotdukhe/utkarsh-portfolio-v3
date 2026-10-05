@@ -97,7 +97,7 @@ export function Hero() {
     { scope: containerRef }
   );
 
-  // Mouse parallax on the warm background blobs
+  // Mouse parallax on the background washes
   useEffect(() => {
     const scope = containerRef.current;
     if (!scope) return;
@@ -133,11 +133,11 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Warm gradient mesh background */}
+      {/* Quiet background: faint accent washes only */}
       <motion.div style={{ y: blobsY }} className="absolute inset-0 pointer-events-none" aria-hidden>
-        <div className="mesh-blob-1 absolute top-[-12%] left-[-10%] w-[620px] h-[620px] rounded-full bg-primary opacity-[0.20] blur-[130px]" />
-        <div className="mesh-blob-2 absolute bottom-[-12%] right-[-6%] w-[520px] h-[520px] rounded-full bg-accent2 opacity-[0.16] blur-[120px]" />
-        <div className="mesh-blob-3 absolute top-[38%] left-[46%] w-[420px] h-[420px] rounded-full bg-secondary opacity-[0.10] blur-[120px]" />
+        <div className="mesh-blob-1 absolute top-[-12%] left-[-10%] w-[620px] h-[620px] rounded-full bg-accent opacity-[0.07] blur-[140px]" />
+        <div className="mesh-blob-2 absolute bottom-[-12%] right-[-6%] w-[520px] h-[520px] rounded-full bg-accent opacity-[0.05] blur-[130px]" />
+        <div className="mesh-blob-3 absolute top-[38%] left-[46%] w-[420px] h-[420px] rounded-full bg-text opacity-[0.03] blur-[130px]" />
       </motion.div>
 
       <motion.div
@@ -171,7 +171,7 @@ export function Hero() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -22, opacity: 0 }}
               transition={{ duration: 0.4, ease: 'easeInOut' }}
-              className="font-display uppercase tracking-wide text-xl sm:text-3xl md:text-4xl font-bold gradient-text text-center leading-tight px-2"
+              className="font-display uppercase tracking-wide text-xl sm:text-3xl md:text-4xl font-bold text-accent text-center leading-tight px-2"
             >
               {ROLES[roleIndex]}
             </motion.p>
@@ -185,8 +185,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="max-w-xl mx-auto text-lg text-muted leading-relaxed"
         >
-          I build AI systems that take over repetitive work. I have shipped
-          70+ automation projects and helped teams stop doing everything by hand.
+          I build LLM applications, AI agents and automation that take repetitive work
+          off people's plates. 70+ automations shipped, plus RAG systems and LLM gateways
+          built to run in production.
         </motion.p>
 
         {/* CTA buttons */}
@@ -213,9 +214,9 @@ export function Hero() {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-14 pt-12 border-t border-border w-full"
         >
           {STATS.map((stat) => (
-            <div key={stat.label} className="group/stat flex flex-col items-center gap-1.5 p-4 md:p-6 rounded-2xl border border-transparent hover:border-border hover:bg-white/70 hover:shadow-[0_18px_44px_-28px_rgba(10,7,5,0.28)] transition-all duration-500">
+            <div key={stat.label} className="group/stat flex flex-col items-center gap-1.5 p-4 md:p-6 rounded-2xl border border-transparent hover:border-border hover:bg-white/80 hover:shadow-[0_18px_44px_-28px_rgba(15,17,21,0.22)] transition-all duration-500">
               <span
-                className="font-display font-bold text-5xl md:text-6xl leading-none tabular-nums text-secondary group-hover/stat:scale-[1.06] transition-transform duration-500"
+                className="font-display font-bold text-5xl md:text-6xl leading-none tabular-nums text-text group-hover/stat:scale-[1.06] transition-transform duration-500"
                 data-count={stat.numericValue}
                 data-suffix={stat.suffix}
               >
@@ -234,7 +235,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 0.8 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-muted/70 hover:text-secondary transition-colors"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-muted/70 hover:text-accent transition-colors"
       >
         <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
         <ChevronDown size={18} className="bounce-slow" />

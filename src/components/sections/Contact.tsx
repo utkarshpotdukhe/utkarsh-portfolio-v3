@@ -56,7 +56,7 @@ export function Contact() {
           label="Get in Touch"
           title="Let's Build Something That Works"
           index="05"
-          subtitle="Got a process that eats your team's hours? Tell me about it. I usually reply within a day."
+          subtitle="Have an AI system to take from prototype to production, or a process that eats your team's hours? Tell me about it. I usually reply within a day."
           className="items-center text-center mb-16"
         />
 
@@ -68,9 +68,9 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-              className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-secondary/50 hover:shadow-[0_24px_60px_-30px_rgba(4,0,11,0.30)] transition-all">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-secondary font-bold">Email</span>
-              <a href={`mailto:${CONTACT.email}`} className="font-grotesk text-xl md:text-2xl font-bold text-text hover:text-secondary transition-colors">
+              className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-accent/40 transition-all">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">Email</span>
+              <a href={`mailto:${CONTACT.email}`} className="font-grotesk text-xl md:text-2xl font-bold text-text hover:text-accent transition-colors">
                 {CONTACT.email}
               </a>
             </motion.div>
@@ -80,9 +80,9 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-secondary/50 hover:shadow-[0_24px_60px_-30px_rgba(4,0,11,0.30)] transition-all">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-secondary font-bold">Phone</span>
-              <a href={`tel:${CONTACT.phone.replace(/\s+/g, '')}`} className="font-grotesk text-xl md:text-2xl font-bold text-text hover:text-secondary transition-colors">
+              className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-accent/40 transition-all">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">Phone</span>
+              <a href={`tel:${CONTACT.phone.replace(/\s+/g, '')}`} className="font-grotesk text-xl md:text-2xl font-bold text-text hover:text-accent transition-colors">
                 {CONTACT.phone}
               </a>
             </motion.div>
@@ -92,9 +92,9 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.75, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
-              className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-secondary/50 hover:shadow-[0_24px_60px_-30px_rgba(4,0,11,0.30)] transition-all">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-secondary font-bold">Network</span>
-              <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" className="font-grotesk text-xl font-bold text-secondary hover:underline hover:underline-offset-8 transition-all">
+              className="industrial-box p-6 md:p-8 flex flex-col items-center text-center gap-4 hover:border-accent/40 transition-all">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">Network</span>
+              <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" className="font-grotesk text-xl font-bold text-accent hover:underline hover:underline-offset-8 transition-all">
                 LinkedIn Profile →
               </a>
             </motion.div>
@@ -106,7 +106,7 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="industrial-box p-6 md:p-10 hover:border-primary/40 transition-colors">
+            className="industrial-box p-6 md:p-10 hover:border-accent/40 transition-colors">
             <form onSubmit={handleSubmit} className="flex flex-col gap-8">
               <div className="flex flex-col gap-3">
                 <label htmlFor="name" className="text-xs font-mono tracking-widest text-muted/70 uppercase font-bold">

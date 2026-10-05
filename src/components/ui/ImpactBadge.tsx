@@ -8,7 +8,7 @@ export function ImpactBadge({ value, label }: ImpactBadgeProps) {
     <div className="flex flex-col gap-0.5">
       <span
         className="text-xl font-bold leading-none"
-        style={{ color: 'var(--color-accent1)' }}
+        style={{ color: 'var(--color-accent)' }}
       >
         {value}
       </span>

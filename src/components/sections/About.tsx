@@ -10,7 +10,7 @@ const INFO: Info[] = [
   { label: 'Location', value: 'Pune, Maharashtra, India' },
   { label: 'Email', value: 'utkarsh16potdukhe@gmail.com' },
   { label: 'Phone', value: '+91 9823668825' },
-  { label: 'Current Role', value: 'AI Automation Developer at E-Commerce Collections' },
+  { label: 'Current Role', value: 'AI Automation Developer at Ecommerce Collections' },
   { label: 'Availability', value: 'Open to new opportunities', highlight: true },
 ];
 
@@ -37,32 +37,32 @@ export function About() {
         <div className="flex flex-col gap-10">
           <SectionHeading
             label="About Me"
-            title="Where code meets automation"
+            title="From prototype to production"
             index="01"
           />
           <div className="space-y-6">
             <BlurReveal align="left" spanClassName="text-ink text-lg md:text-xl leading-relaxed">
-              {`For the last couple of years I have been building n8n workflows, deploying AI agents, and building web dashboards that save teams hours every week. Right now I build multi-agent automation and AI product systems for E-Commerce Collections (US, remote), where I connect what is technically possible with what the business actually needs.`}
+              {`I am an AI Engineer with 2+ years building LLM applications, AI agents and workflow automation. I have delivered 70+ automation projects with n8n and Python, and built RAG systems, agentic workflows and LLM gateways with a focus on retrieval quality, access control, evaluation, observability and cost. Right now I build multi agent automation and AI product systems for Ecommerce Collections (US, remote).`}
             </BlurReveal>
             <BlurReveal align="left" spanClassName="text-muted text-lg md:text-xl leading-relaxed">
-              {`I started out doing React performance work with Redux, GraphQL, and component-level tuning, and then moved into building full multi-agent AI pipelines that remove a lot of manual work. I enjoy turning unclear business goals into systems you can actually measure.`}
+              {`I came up through the web side with Next.js, React and Node, doing performance work with Redux and GraphQL, then moved into taking AI systems from prototype to production. Along the way I led and mentored two interns. I enjoy turning unclear business goals into systems you can actually measure.`}
             </BlurReveal>
           </div>
 
           {/* Languages */}
           <div className="pt-8 border-t border-border">
-            <p className="text-[11px] font-mono text-secondary uppercase tracking-widest mb-5 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-secondary rounded-sm"></span>
+            <p className="text-[11px] font-mono text-accent uppercase tracking-widest mb-5 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-accent rounded-sm"></span>
               Spoken Languages
             </p>
             <div className="flex flex-wrap gap-3">
               {['English', 'Hindi', 'Marathi'].map((lang) => (
                 <div
                   key={lang}
-                  className="group relative px-4 py-2 bg-surface border border-border hover:border-secondary/50 transition-all duration-300 rounded-lg"
+                  className="group relative px-4 py-2 bg-white border border-border hover:border-accent/50 transition-all duration-300 rounded-lg"
                 >
-                  <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-secondary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <span className="relative z-10 font-mono text-xs tracking-wider text-text/80 group-hover:text-secondary transition-colors">
+                  <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="relative z-10 font-mono text-xs tracking-wider text-text/80 group-hover:text-accent transition-colors">
                     {lang}
                   </span>
                 </div>
@@ -74,14 +74,14 @@ export function About() {
         {/* Info card */}
         <div className="relative group h-fit w-full max-w-[500px] lg:ml-auto">
           {/* Ambient glow */}
-          <div className="absolute -inset-6 bg-primary/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-30 transition-opacity duration-1000" />
+          <div className="absolute -inset-6 bg-accent/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-40 transition-opacity duration-1000" />
 
-          <div className="industrial-box p-4 md:p-7 relative z-10 hover:border-primary/40">
+          <div className="industrial-box p-4 md:p-7 relative z-10 hover:border-accent/40">
             {/* Engineering corner brackets */}
-            <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-primary/20 -mt-[1px] -ml-[1px]" />
-            <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-primary/20 -mt-[1px] -mr-[1px]" />
-            <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-primary/20 -mb-[1px] -ml-[1px]" />
-            <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-primary/20 -mb-[1px] -mr-[1px]" />
+            <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-accent/30 -mt-[1px] -ml-[1px]" />
+            <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-accent/30 -mt-[1px] -mr-[1px]" />
+            <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-accent/30 -mb-[1px] -ml-[1px]" />
+            <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-accent/30 -mb-[1px] -mr-[1px]" />
 
             <motion.div
               variants={listVariants}
@@ -96,11 +96,11 @@ export function About() {
                   variants={rowVariants}
                   className={`flex flex-col gap-2 relative ${idx !== 0 ? 'border-t border-border pt-6' : 'pt-0'}`}
                 >
-                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-secondary font-bold">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent font-bold">
                     {item.label}
                   </span>
 
-                  <div className={`text-base md:text-lg font-bold tracking-tight leading-tight ${item.highlight ? 'text-success drop-shadow-[0_0_12px_rgba(34,197,94,0.3)]' : 'text-text'}`}>
+                  <div className={`text-base md:text-lg font-bold tracking-tight leading-tight ${item.highlight ? 'text-success' : 'text-text'}`}>
                     {item.highlight ? (
                       <div className="flex items-center gap-4">
                         <div className="relative flex h-3.5 w-3.5 shrink-0">

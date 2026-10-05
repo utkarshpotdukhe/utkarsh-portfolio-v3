@@ -65,22 +65,22 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl max-h-[85vh] overflow-hidden rounded-[24px] bg-[#FDFCFA] border border-black/[0.06] shadow-2xl flex flex-col md:flex-row"
+            className="relative w-full max-w-4xl max-h-[85vh] overflow-hidden rounded-[24px] bg-white border border-border shadow-2xl flex flex-col md:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-[#F5F2EB] border border-border text-muted hover:text-text hover:bg-black/[0.05] transition-all"
+              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-surface border border-border text-muted hover:text-text hover:bg-black/[0.05] transition-all"
             >
               <X size={18} />
             </button>
 
             {/* Left Panel: Overview */}
-            <div className="w-full md:w-[38%] p-6 md:p-10 border-b md:border-b-0 md:border-r border-border bg-gradient-to-br from-primary/[0.10] to-transparent flex flex-col">
+            <div className="w-full md:w-[38%] p-6 md:p-10 border-b md:border-b-0 md:border-r border-border bg-gradient-to-br from-accent/[0.06] to-transparent flex flex-col">
               <div className="flex flex-col gap-6 h-full">
                 <div className="flex flex-col gap-3">
-                  <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-secondary font-bold">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-accent font-bold">
                     Project Case Study
                   </span>
                   <h2 className="font-grotesk text-2xl md:text-3xl font-black text-text leading-tight">
@@ -89,7 +89,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <span className="text-secondary font-black text-3xl tracking-tight">{project.impact}</span>
+                  <span className="text-accent font-black text-3xl tracking-tight">{project.impact}</span>
                   <span className="text-success font-mono text-[9px] uppercase tracking-widest font-bold">
                     {project.impactLabel}
                   </span>
@@ -114,7 +114,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {/* Description Section */}
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-3 text-muted">
-                    <Zap size={16} className="text-secondary" />
+                    <Zap size={16} className="text-accent" />
                     <span className="text-[10px] font-mono uppercase tracking-[0.2em] font-bold">The Problem & Solution</span>
                   </div>
                   <p className="text-muted text-sm leading-relaxed">
@@ -128,14 +128,14 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     {project.modules.map((module, i) => {
                       const Icon = [BarChart3, Layers, Zap, CheckCircle2, ShieldCheck, Cog][i % 6];
                       return (
-                        <div key={i} className="p-5 rounded-xl border border-border bg-[#F5F2EB] flex flex-col gap-2.5 transition-all hover:bg-white hover:border-primary/40 hover:shadow-[0_16px_40px_-24px_rgba(4,0,11,0.30)]">
+                        <div key={i} className="p-5 rounded-xl border border-border bg-surface flex flex-col gap-2.5 transition-all hover:bg-white hover:border-accent/40 hover:shadow-[0_16px_40px_-24px_rgba(15,17,21,0.22)]">
                           <Icon size={18} className={[
-                            "text-secondary",
-                            "text-accent2",
-                            "text-secondary",
+                            "text-accent",
+                            "text-text",
+                            "text-accent",
                             "text-success",
-                            "text-accent2",
-                            "text-secondary"
+                            "text-text",
+                            "text-accent"
                           ][i % 6]} />
                           <h4 className="font-grotesk font-bold text-text text-[13px] leading-tight">{module.title}</h4>
                           <p className="text-[11px] text-muted leading-relaxed">
@@ -148,15 +148,15 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="p-4 rounded-xl border border-border bg-[#F5F2EB] flex flex-col gap-2">
-                      <BarChart3 size={18} className="text-secondary" />
+                    <div className="p-4 rounded-xl border border-border bg-surface flex flex-col gap-2">
+                      <BarChart3 size={18} className="text-accent" />
                       <h4 className="font-grotesk font-bold text-text text-[13px]">Automated Logic</h4>
                       <p className="text-[11px] text-muted leading-relaxed">
                         Custom-built workflow triggers and complex conditional branching for zero manual intervention.
                       </p>
                     </div>
-                    <div className="p-4 rounded-xl border border-border bg-[#F5F2EB] flex flex-col gap-2">
-                      <Layers size={18} className="text-accent2" />
+                    <div className="p-4 rounded-xl border border-border bg-surface flex flex-col gap-2">
+                      <Layers size={18} className="text-accent" />
                       <h4 className="font-grotesk font-bold text-text text-[13px]">Data Integrity</h4>
                       <p className="text-[11px] text-muted leading-relaxed">
                         Built-in error handling and multi-service sync keeping reports and datasets perfectly aligned.
@@ -168,13 +168,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {/* Core Capabilities */}
                 {project.capabilities && (
                   <div className="flex flex-col gap-4">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-secondary font-bold flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-secondary" /> Core Capabilities
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent" /> Core Capabilities
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
                       {project.capabilities.map((cap, i) => (
                         <div key={i} className="flex gap-2 items-center text-[11px] text-muted">
-                          <CheckCircle2 size={12} className="text-secondary shrink-0" />
+                          <CheckCircle2 size={12} className="text-accent shrink-0" />
                           <span>{cap}</span>
                         </div>
                       ))}
@@ -185,7 +185,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {/* Image Gallery */}
                 {project.images && (
                   <div className="flex flex-col gap-4">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-secondary font-bold">Workflow Logic Screenshots</h4>
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">Workflow Logic Screenshots</h4>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
                       {project.images.map((rawSrc, i) => {
                         const src = asset(rawSrc);
@@ -213,7 +213,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {/* Technical Highlights & Business Impact */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
                   <div className="flex flex-col gap-4">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-secondary font-bold">Technical Highlights</h4>
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">Technical Highlights</h4>
                     <ul className="grid grid-cols-1 gap-2.5">
                       {project.highlights ? (
                         project.highlights.map((h, i) => <KeyFeature key={i}>{h}</KeyFeature>)
@@ -262,7 +262,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-secondary/10 border border-secondary/25 text-secondary hover:bg-secondary/20 transition-colors text-[9px] tracking-widest uppercase font-bold"
+                          className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-accent-soft border border-accent/25 text-accent hover:bg-accent/15 transition-colors text-[9px] tracking-widest uppercase font-bold"
                         >
                           Open Live Script <ExternalLink size={12} />
                         </a>
@@ -275,7 +275,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                       </MagneticBtn>
                       <button
                         disabled
-                        className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F5F2EB] border border-border text-muted/50 text-[9px] tracking-widest uppercase font-bold cursor-not-allowed opacity-70"
+                        className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-surface border border-border text-muted/50 text-[9px] tracking-widest uppercase font-bold cursor-not-allowed opacity-70"
                       >
                         Live Demo <ExternalLink size={12} />
                       </button>
@@ -285,10 +285,10 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             {/* Industrial Design Accents */}
-            <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-primary/30" />
-            <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-primary/30" />
-            <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-primary/30" />
-            <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-primary/30" />
+            <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-accent/40" />
+            <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-accent/40" />
+            <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-accent/40" />
+            <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-accent/40" />
           </motion.div>
         </motion.div>
       </AnimatePresence>
@@ -344,7 +344,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     setActiveImage(null);
                     setZoomScale(1);
                   }}
-                  className="p-2 text-white/70 hover:text-secondary transition-colors"
+                  className="p-2 text-white/70 hover:text-accent transition-colors"
                   title="Close"
                 >
                   <X size={20} />

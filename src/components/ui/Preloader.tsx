@@ -36,15 +36,15 @@ export function Preloader({ onDone }: { onDone: () => void }) {
       initial={{ y: 0 }}
       exit={{ y: '-100%' }}
       transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
-      className="fixed inset-0 z-[300] bg-[#0A0705] text-white flex flex-col justify-between p-7 md:p-12 overflow-hidden"
+      className="fixed inset-0 z-[300] bg-[#0F1115] text-white flex flex-col justify-between p-7 md:p-12 overflow-hidden"
     >
-      {/* warm glow */}
-      <div className="pointer-events-none absolute -top-1/3 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] rounded-full bg-primary/20 blur-[160px]" />
+      {/* quiet accent glow */}
+      <div className="pointer-events-none absolute -top-1/3 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] rounded-full bg-accent/25 blur-[160px]" />
 
       {/* Top row */}
       <div className="relative flex items-center justify-between">
-        <span className="eyebrow !text-primary">
-          <span className="h-px w-8 bg-primary" />
+        <span className="eyebrow !text-white/80">
+          <span className="h-px w-8 bg-accent" />
           Utkarsh Potdukhe
         </span>
         <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-white/50">Portfolio ’26</span>
@@ -58,7 +58,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="font-display font-extrabold uppercase text-white text-6xl md:text-8xl tracking-[-0.02em] text-center leading-[0.9]"
         >
-          AI Automation<br />
+          AI<br />
           <span className="text-white/25">Engineer</span>
         </motion.h2>
       </div>
@@ -67,14 +67,14 @@ export function Preloader({ onDone }: { onDone: () => void }) {
       <div className="relative flex flex-col gap-4">
         <div className="flex items-end justify-between">
           <span className="text-sm text-white/50 font-medium">Loading experience</span>
-          <span className="font-display font-bold text-6xl md:text-8xl leading-none tabular-nums text-primary">
+          <span className="font-display font-bold text-6xl md:text-8xl leading-none tabular-nums text-white">
             {count}
             <span className="text-white/30">%</span>
           </span>
         </div>
         <div className="h-px w-full bg-white/15 overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-primary to-secondary"
+            className="h-full bg-accent"
             style={{ width: `${count}%` }}
           />
         </div>

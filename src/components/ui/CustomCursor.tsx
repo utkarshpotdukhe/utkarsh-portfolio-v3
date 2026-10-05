@@ -44,16 +44,16 @@ export default function CustomCursor() {
       if (isCard) {
         gsap.to(ring, {
           width: 84, height: 84,
-          backgroundColor: 'var(--color-primary)',
-          borderColor: 'var(--color-primary)',
+          backgroundColor: 'var(--color-text)',
+          borderColor: 'var(--color-text)',
           duration: 0.3, ease: 'power3.out',
         });
         gsap.to(label, { opacity: 1, scale: 1, duration: 0.25, ease: 'power2.out' });
       } else {
         gsap.to(ring, {
           width: 46, height: 46,
-          backgroundColor: 'rgba(245,66,0,0.12)',
-          borderColor: 'var(--color-secondary)',
+          backgroundColor: 'rgba(22,106,107,0.12)',
+          borderColor: 'var(--color-accent)',
           duration: 0.25,
         });
       }
@@ -65,7 +65,7 @@ export default function CustomCursor() {
       gsap.to(ring, {
         width: 34, height: 34,
         backgroundColor: 'transparent',
-        borderColor: 'var(--color-secondary)',
+        borderColor: 'var(--color-accent)',
         duration: 0.25,
       });
     };
@@ -104,17 +104,17 @@ export default function CustomCursor() {
     <>
       <div
         ref={dotRef}
-        className="cursor-visual pointer-events-none fixed top-0 left-0 z-[9999] w-2 h-2 rounded-full bg-secondary"
+        className="cursor-visual pointer-events-none fixed top-0 left-0 z-[9999] w-2 h-2 rounded-full bg-accent"
         style={{ willChange: 'transform' }}
       />
       <div
         ref={ringRef}
-        className="cursor-visual pointer-events-none fixed top-0 left-0 z-[9998] w-[34px] h-[34px] rounded-full border border-secondary flex items-center justify-center"
+        className="cursor-visual pointer-events-none fixed top-0 left-0 z-[9998] w-[34px] h-[34px] rounded-full border border-accent flex items-center justify-center"
         style={{ willChange: 'transform' }}
       >
         <span
           ref={labelRef}
-          className="text-[11px] font-bold uppercase tracking-wider text-[#0A0705] opacity-0"
+          className="text-[11px] font-bold uppercase tracking-wider text-white opacity-0"
           style={{ transform: 'scale(0.6)' }}
         >
           View

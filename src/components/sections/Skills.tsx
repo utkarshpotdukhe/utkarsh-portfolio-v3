@@ -3,27 +3,26 @@
 import { motion } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SkillTag } from '@/components/ui/SkillTag';
-import { TECHNICAL_SKILLS, PROFESSIONAL_SKILLS } from '@/lib/constants';
+import { SKILL_GROUPS } from '@/lib/constants';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 18, scale: 0.9, filter: 'blur(6px)' },
+const cardVariants = {
+  hidden: { opacity: 0, y: 26, filter: 'blur(8px)' },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     filter: 'blur(0px)',
-    transition: { type: 'spring' as const, stiffness: 260, damping: 22 },
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
   },
+};
+
+const chipsVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.035, delayChildren: 0.15 } },
+};
+
+const chipVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 export function Skills() {
@@ -31,57 +30,40 @@ export function Skills() {
     <section id="skills" className="py-28 relative">
       <div className="section-container">
         <SectionHeading
-          label="Skills & Tools"
+          label="Skills and Tools"
           title="The Stack Behind the Work"
           index="03"
-          subtitle="A small, focused set of tools I actually use to build scalable AI pipelines and fast, reliable web interfaces."
+          subtitle="LLM applications, retrieval, agents and the infrastructure to run them in production, plus the web stack I came up through."
           className="items-center text-center"
         />
 
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-          {/* Technical */}
-          <div>
-            <h3 className="font-grotesk text-xl font-bold text-text mb-6 flex items-center justify-center gap-3">
-              <span className="w-8 h-[2px] bg-secondary"></span>
-              Technical Skillls
-              <span className="w-8 h-[2px] bg-secondary"></span>
-            </h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+          {SKILL_GROUPS.map((group, i) => (
             <motion.div
-              variants={containerVariants}
+              key={group.title}
+              variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: '-100px' }}
-              className="flex flex-wrap gap-3 justify-center"
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ delay: (i % 3) * 0.08 }}
+              className="industrial-box p-6 md:p-7 flex flex-col gap-5"
             >
-              {TECHNICAL_SKILLS.map((skill) => (
-                <motion.div key={skill.label} variants={itemVariants}>
-                  <SkillTag skill={skill} />
-                </motion.div>
-              ))}
+              <div className="flex items-center justify-between">
+                <h3 className="font-grotesk text-lg font-bold text-text tracking-tight">{group.title}</h3>
+                <span className="font-mono text-[11px] text-muted/70 tabular-nums">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </div>
+              <span className="h-px w-full bg-border" />
+              <motion.div variants={chipsVariants} className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <motion.span key={item} variants={chipVariants}>
+                    <SkillTag label={item} />
+                  </motion.span>
+                ))}
+              </motion.div>
             </motion.div>
-          </div>
-
-          {/* Professional */}
-          <div>
-            <h3 className="font-grotesk text-xl font-bold text-text mb-6 flex items-center justify-center gap-3">
-              <span className="w-8 h-[2px] bg-accent2"></span>
-              Professional Skills
-              <span className="w-8 h-[2px] bg-accent2"></span>
-            </h3>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-100px' }}
-              className="flex flex-wrap gap-3 justify-center"
-            >
-              {PROFESSIONAL_SKILLS.map((skill) => (
-                <motion.div key={skill.label} variants={itemVariants}>
-                  <SkillTag skill={skill} />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

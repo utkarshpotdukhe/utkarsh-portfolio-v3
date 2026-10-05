@@ -6,6 +6,37 @@ import { ArrowUpRight } from 'lucide-react';
 import type { Project } from '@/types';
 
 const ICONS: Record<Project['iconType'], React.ReactNode> = {
+  rag: (
+    <svg viewBox="0 0 48 48" className="w-6 h-6" fill="none">
+      <rect x="6" y="8" width="20" height="26" rx="2" stroke="currentColor" strokeWidth="2.5" />
+      <path d="M11 15h10M11 21h10M11 27h6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="33" cy="30" r="7" stroke="currentColor" strokeWidth="2.5" />
+      <path d="M38 35l5 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  ),
+  agent: (
+    <svg viewBox="0 0 48 48" className="w-6 h-6" fill="none">
+      <circle cx="24" cy="10" r="4" stroke="currentColor" strokeWidth="2.5" />
+      <circle cx="10" cy="36" r="4" stroke="currentColor" strokeWidth="2.5" />
+      <circle cx="38" cy="36" r="4" stroke="currentColor" strokeWidth="2.5" />
+      <path d="M24 14v8M24 22l-11 10M24 22l11 10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  ),
+  gateway: (
+    <svg viewBox="0 0 48 48" className="w-6 h-6" fill="none">
+      <path d="M6 24h12M30 12h12M30 24h12M30 36h12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M18 24c6 0 6-12 12-12M18 24h12M18 24c6 0 6 12 12 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  ),
+  research: (
+    <svg viewBox="0 0 48 48" className="w-6 h-6" fill="none">
+      <circle cx="10" cy="24" r="3" fill="currentColor" />
+      <circle cx="24" cy="12" r="3" fill="currentColor" />
+      <circle cx="24" cy="36" r="3" fill="currentColor" />
+      <circle cx="38" cy="24" r="3" fill="currentColor" />
+      <path d="M12.5 22l9-8M12.5 26l9 8M26.5 13.5l9 8M26.5 34.5l9-8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  ),
   ecom: (
     <svg viewBox="0 0 48 48" className="w-6 h-6" fill="none">
       <rect x="4" y="12" width="40" height="28" rx="3" stroke="currentColor" strokeWidth="2.5" />
@@ -102,26 +133,26 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
         viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.85, delay: (index % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
         className="group glass-card relative h-full w-full flex flex-col text-left p-6 md:p-7 cursor-pointer
-                   hover:border-secondary/40 transition-colors duration-300 overflow-hidden"
+                   hover:border-accent/40 transition-colors duration-300 overflow-hidden"
       >
-        {/* warm wash on hover */}
+        {/* faint accent wash on hover */}
         <div className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500
-                        bg-[radial-gradient(120%_120%_at_100%_0%,rgba(255,174,0,0.10),transparent_55%)]" />
+                        bg-[radial-gradient(120%_120%_at_100%_0%,rgba(22,106,107,0.08),transparent_55%)]" />
 
         {/* Top row: index + icon */}
         <div className="relative flex items-start justify-between mb-6" style={{ transform: 'translateZ(30px)' }}>
-          <span className="font-display font-bold text-5xl leading-none text-text/10 group-hover:text-secondary/25 transition-colors duration-500 tabular-nums">
+          <span className="font-display font-bold text-5xl leading-none text-text/10 group-hover:text-accent/30 transition-colors duration-500 tabular-nums">
             {String(index + 1).padStart(2, '0')}
           </span>
-          <span className="w-11 h-11 rounded-xl bg-surface border border-border flex items-center justify-center text-secondary
-                           group-hover:bg-secondary group-hover:text-white group-hover:border-secondary transition-all duration-300">
+          <span className="w-11 h-11 rounded-xl bg-surface border border-border flex items-center justify-center text-text
+                           group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300">
             {ICONS[project.iconType]}
           </span>
         </div>
 
         {/* Impact */}
         <div className="relative flex items-baseline gap-2 mb-3" style={{ transform: 'translateZ(24px)' }}>
-          <span className="font-display font-bold text-4xl md:text-5xl text-secondary leading-none tracking-tight">
+          <span className="font-display font-bold text-4xl md:text-5xl text-accent leading-none tracking-tight">
             {project.impact}
           </span>
           <span className="text-[11px] text-muted font-medium leading-tight max-w-[9rem]">
@@ -152,7 +183,7 @@ export function ProjectCard({ project, index, onClick }: ProjectCardProps) {
             )}
           </div>
           <span className="shrink-0 w-9 h-9 rounded-full border border-border flex items-center justify-center text-text
-                           group-hover:bg-secondary group-hover:border-secondary group-hover:text-white transition-all duration-300">
+                           group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
             <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </span>
         </div>

@@ -20,7 +20,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative glass-panel pt-24 pb-12 overflow-hidden border-t border-white/50">
+    <footer className="relative glass-panel pt-24 pb-12 overflow-hidden">
       {/* Background Accents (Industrial Grid) */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]" 
            style={{ backgroundImage: 'radial-gradient(var(--color-primary) 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }} 
@@ -32,7 +32,7 @@ export function Footer() {
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <span className="eyebrow">
-                <span className="h-px w-8 bg-secondary" />
+                <span className="h-px w-8 bg-accent" />
                 Ready to automate?
               </span>
               <h2 className="font-display font-extrabold text-6xl md:text-8xl text-text leading-[0.85] tracking-[-0.02em]">
@@ -43,10 +43,10 @@ export function Footer() {
             <motion.a
               href="mailto:utkarsh16potdukhe@gmail.com"
               whileHover={{ x: 10 }}
-              className="group flex items-center gap-4 text-xl md:text-2xl font-semibold text-text hover:text-secondary transition-colors pr-4"
+              className="group flex items-center gap-4 text-xl md:text-2xl font-semibold text-text hover:text-accent transition-colors pr-4"
             >
               {CONTACT.email}
-              <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover:border-secondary/50 group-hover:bg-secondary/5 transition-all">
+              <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent-soft transition-all">
                 <ArrowUpRight size={20} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
             </motion.a>
@@ -58,7 +58,7 @@ export function Footer() {
               <ul className="flex flex-col gap-3">
                 {['About', 'Projects', 'Skills', 'Experience'].map((item) => (
                   <li key={item}>
-                    <a href={`#${item.toLowerCase()}`} className="text-[13px] text-muted/70 hover:text-secondary transition-colors font-medium">
+                    <a href={`#${item.toLowerCase()}`} className="text-[13px] text-muted/70 hover:text-accent transition-colors font-medium">
                       {item}
                     </a>
                   </li>
@@ -70,7 +70,7 @@ export function Footer() {
               <span className="font-mono text-[9px] uppercase tracking-widest text-muted font-bold">Social</span>
               <ul className="flex flex-col gap-3">
                 <li>
-                  <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[13px] text-muted/60 hover:text-[#0077B5] transition-colors font-medium">
+                  <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[13px] text-muted/60 hover:text-accent transition-colors font-medium">
                     <LinkedinIcon size={14} /> LinkedIn
                   </a>
                 </li>
@@ -86,13 +86,13 @@ export function Footer() {
               <span className="font-mono text-[9px] uppercase tracking-widest text-muted font-bold">Contact</span>
               <ul className="flex flex-col gap-4">
                 <li className="flex items-start gap-3">
-                  <MapPin size={14} className="text-secondary mt-0.5 shrink-0" />
+                  <MapPin size={14} className="text-accent mt-0.5 shrink-0" />
                   <span className="text-[12px] text-muted/70 leading-relaxed font-medium">
                     {CONTACT.location.split(',').slice(0, 2).join(',')},<br />{CONTACT.location.split(',').slice(2).join(',')}
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Phone size={14} className="text-secondary shrink-0" />
+                  <Phone size={14} className="text-accent shrink-0" />
                   <span className="text-[12px] text-muted/70 font-medium">{CONTACT.phone}</span>
                 </li>
               </ul>
@@ -103,14 +103,14 @@ export function Footer() {
         {/* Bottom Section: Copyright & System Status */}
         <div className="pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-8">
-            <span className="font-grotesk font-black text-2xl text-text tracking-tighter uppercase whitespace-nowrap">Utkarsh Potdukhe<span className="text-secondary">.</span></span>
+            <span className="font-grotesk font-black text-2xl text-text tracking-tighter uppercase whitespace-nowrap">Utkarsh Potdukhe<span className="text-accent">.</span></span>
             <div className="h-4 w-px bg-border hidden sm:block" />
             <span className="text-[12px] text-muted/70 font-medium">
               © {currentYear} Utkarsh Potdukhe. Designed and built in Pune, India.
             </span>
           </div>
 
-          <div className="flex items-center gap-6 px-5 py-2 glass-soft rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_6px_20px_-12px_rgba(10,7,5,0.25)]">
+          <div className="flex items-center gap-6 px-5 py-2 glass-soft rounded-full">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-70" />
@@ -127,8 +127,7 @@ export function Footer() {
       </div>
 
       {/* Industrial Accents */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-40 h-40 bg-accent/5 blur-[100px] pointer-events-none" />
     </footer>
   );
 }
